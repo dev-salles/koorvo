@@ -344,13 +344,111 @@ li { list-style: none; }
 .th-button--whatsapp:hover::before { opacity: 1; animation: lightSlide 8s linear infinite; filter: drop-shadow(0 0 5px #25D366); }
 
 /* 7. FOOTER */
+/* 7. FOOTER - CLEAN TECH STYLE */
 .th-footer {
-  padding: 80px 0 40px;
-  background-color: var(--color-bg);
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  text-align: center;
+    padding: 100px 0 40px;
+    background-color: var(--color-bg); /* Fundo sólido e limpo */
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid rgba(255, 255, 255, 0.05); /* Linha divisória sutil */
 }
-.th-footer__social { display: flex; justify-content: center; gap: 20px; margin: 30px 0; } 
+
+/* Removido o pseudo-elemento ::before que continha o glow */
+
+.th-footer__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.th-footer__content {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.th-footer__logo {
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+    color: var(--color-white);
+}
+
+.th-footer__logo span {
+    color: var(--color-secondary);
+}
+
+.th-footer__description {
+    max-width: 450px;
+    margin: 0 auto 40px;
+    color: var(--color-gray);
+    font-size: 1.1rem;
+}
+
+/* Redes Sociais mantendo a estética dos botões apenas no hover */
+.th-footer__social {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.th-social-item {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    color: var(--color-white);
+    font-size: 1.2rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.th-social-item:hover {
+    background: var(--gradient-koorvo);
+    border-color: transparent;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(123, 66, 246, 0.2);
+    color: white;
+}
+
+/* Rodapé Inferior */
+.th-footer__bottom {
+    padding-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: rgba(160, 174, 192, 0.5);
+}
+
+.th-footer__links {
+    display: flex;
+    gap: 30px;
+}
+
+.th-footer__links a {
+    transition: 0.3s;
+}
+
+.th-footer__links a:hover {
+    color: var(--color-secondary);
+}
+
+/* Responsividade Footer */
+@media (max-width: 768px) {
+    .th-footer { padding: 60px 0 30px; }
+    .th-footer__bottom {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+}
 
 /* EFEITOS DE GLOW (ORBES) - POSICIONAMENTO SUAVE */
 .th-bg-glow {
