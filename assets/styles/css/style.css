@@ -242,16 +242,48 @@ li { list-style: none; }
 .th-about__info-text p { font-size: 1.2rem; line-height: 1.8; color: var(--color-gray); margin-bottom: 25px; }
 .th-about__info-text p:first-child { color: var(--color-white); font-size: 1.4rem; font-weight: 500; }
 
-.th-about__image-wrapper { flex: 1; position: relative; display: flex; justify-content: center; align-items: center; }
+/* Ajuste da Imagem na Seção Sobre */
 
-
-.th-about__image-content {
-  width: 100%; max-width: 500px; border-radius: 32px; border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(10px); padding: 20px;
-  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5); transition: transform 0.5s ease;
+.th-about__image-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 0; /* Evita que o flexbox se expanda além do necessário */
 }
 
-.th-about__image-content:hover { transform: translateY(-10px) rotate(1deg); border-color: var(--color-primary); }
+.th-about__image-content {
+    width: 100%;
+    /* Reduzi o max-width de 500px para 420px para um visual mais equilibrado */
+    max-width: 420px; 
+    aspect-ratio: 1 / 1; /* Mantém o card perfeitamente quadrado se desejar */
+    padding: 60px; /* Aumentei o padding para a logo "respirar" mais dentro do card */
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    transition: all 0.5s ease;
+}
+
+/* Controle direto da Logo */
+.th-about__img-card img {
+    width: 100%;
+    height: auto;
+    max-height: 250px; /* Garante que a logo não fique alta demais */
+    object-fit: contain; /* Mantém as proporções da logo sem distorcer */
+    filter: drop-shadow(0 0 30px rgba(0, 209, 255, 0.2)); /* Brilho no tom Ciano da Koorvo */
+}
+
+/* Efeito Hover Refinado */
+.th-about__image-content:hover {
+    transform: translateY(-10px) rotate(-1deg);
+    border-color: var(--color-secondary);
+    background: rgba(255, 255, 255, 0.04);
+}
 
 @keyframes pulseGlow {
   0% { transform: scale(0.95); opacity: 0.5; }
