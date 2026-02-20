@@ -70,6 +70,31 @@ li { list-style: none; }
   align-items: center;
 }
 
+.th-header__logo {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+    color: var(--color-white);
+    transition: 0.3s;
+}
+
+/* O detalhe em Ciano igual ao do footer */
+.th-header__logo span {
+    color: var(--color-secondary);
+    transition: 0.3s;
+}
+
+/* Efeito de hover sutil para a logo */
+.th-header__logo:hover {
+    transform: scale(1.02);
+}
+
+.th-header__logo:hover span {
+    /* Um leve brilho no ponto ao passar o mouse */
+    text-shadow: 0 0 10px var(--color-secondary);
+}
+
 .th-header__menu-list { display: flex; gap: 30px; list-style: none; }
 .th-header__menu-item a { color: var(--color-white); font-weight: 500; transition: 0.3s; }
 .th-header__menu-item a:hover { color: var(--color-secondary); }
