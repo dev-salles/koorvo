@@ -1,0 +1,749 @@
+/* 1. CONFIGURAÇÕES BASE */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+
+:root {
+  --color-primary: #7B42F6;
+  /* Roxo Vitamina */
+  --color-secondary: #00D1FF;
+  /* Ciano Vitamina */
+  --color-bg: #0B0E14;
+  /* Fundo Dark Profundo */
+  --color-white: #ffffff;
+  --color-gray: #A0AEC0;
+  --gradient-koorvo: linear-gradient(90deg, #7B42F6 0%, #00D1FF 100%);
+
+  /* Mantendo compatibilidade com as classes do seu HTML */
+  --th-color-primary: var(--color-primary);
+  --th-color-secondary: var(--color-secondary);
+  --th-bg-body: var(--color-bg);
+}
+
+*,
+*::before,
+*::after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scrollbar-width: 4px;
+  scrollbar-color: var(--color-secondary);
+}
+
+::-webkit-scrollbar {
+  width: 3px
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-secondary);
+}
+
+::selection {
+  background-color: var(--color-secondary);
+  color: #191919
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-gray);
+  font-family: "Plus Jakarta Sans", sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
+  color: var(--color-white);
+  font-weight: 600;
+}
+
+/* 2. HEADER E NAVEGAÇÃO (ESTILO VITAMINAWEB) */
+.th-header {
+  position: fixed;
+  top: 0;
+  left: 0;;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgba(11, 14, 20, 0.85);
+  backdrop-filter: blur(5px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 30px 0;
+}
+
+.th-header.scrolling {
+  background-color: #191919
+}
+
+.th-header.scrolling .th-header__navigation {
+  padding-block: 8px
+}
+
+@media screen and (min-width: 992px) {
+  .th-header.scrolling .th-header__menu-item a {
+    padding-block: 8px
+  }
+}
+
+li {
+  list-style: none
+}
+
+a {
+  text-decoration: none;
+  color: inherit
+}
+
+img {
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: center;
+  object-position: center;
+  display: block;
+  width: auto;
+  max-width: 100%
+}
+
+form {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px
+}
+
+form * {
+  flex-basis: 100%
+}
+
+@media screen and (min-width: 768px) {
+  form *.th-half-field {
+    flex-basis: calc(50% - 10px)
+  }
+}
+
+@media screen and (min-width: 576px) {
+
+  form button,
+  form input[type=submit] {
+    flex-basis: unset;
+    margin-inline: auto
+  }
+}
+
+@media screen and (min-width: 992px) {
+
+  form button,
+  form input[type=submit] {
+    margin: 0
+  }
+}
+
+label {
+  cursor: pointer;
+  font-size: .8em
+}
+
+input,
+textarea,
+select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background-color: #191919;
+  padding: 12px;
+  border: 1px solid #e39e22;
+  border-radius: 0;
+  outline: none;
+  resize: none
+}
+
+input.th-secondary-background,
+textarea.th-secondary-background,
+select.th-secondary-background {
+  background-color: #212121
+}
+
+select,
+::picker(select) {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background-color: #191919;
+  padding: 12px;
+  border: 1px solid #e39e22;
+  border-radius: 0;
+  outline: none;
+  resize: none;
+  cursor: pointer;
+  appearance: base-select
+}
+
+select.th-secondary-background,
+::picker(select).th-secondary-background {
+  background-color: #212121
+}
+
+::picker(select) {
+  padding: 0;
+  margin-block: 5px
+}
+
+select::picker-icon {
+  transition: all .3s ease 0s;
+  color: #e39e22
+}
+
+select:open::picker-icon {
+  transform: rotate(180deg)
+}
+
+option {
+  padding: 12px
+}
+
+option::checkmark {
+  display: none
+}
+
+picture {
+  display: flex
+}
+
+.th-heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  row-gap: 10px;
+  text-align: center;
+  margin-inline: auto;
+  margin-bottom: 40px;
+  line-height: 1em
+}
+
+@media screen and (min-width: 992px) {
+  .th-heading {
+    text-align: start;
+    align-items: flex-start;
+    margin-inline: 0
+  }
+}
+
+.th-heading h2 {
+  font-size: 2em;
+  line-height: 1.2
+}
+
+@media screen and (min-width: 768px) {
+  .th-heading h2 {
+    font-size: 2.4em
+  }
+}
+
+.th-heading p {
+  text-transform: none;
+  display: block;
+  color: #e39e22;
+  font-weight: 500;
+  font-size: 1.2em
+}
+
+.th-tagline {
+  max-width: 600px;
+  margin-inline: auto;
+  text-align: center;
+  margin-bottom: 60px
+}
+
+@media screen and (min-width: 576px) {
+  .th-tagline {
+    font-size: 1.2em
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .th-tagline {
+    margin-inline: 0;
+    text-align: left
+  }
+}
+
+.th-header__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.th-header__menu-list {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+
+.th-header__menu-item a {
+  color: var(--color-white);
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.th-header__menu-item a:hover {
+  color: var(--color-secondary);
+}
+
+/* CONTAINER PRINCIPAL */
+.th-services {
+    background-color: #0f121a;
+    position: relative;
+    z-index: 2; /* Fica acima do efeito da seção anterior */
+    margin-top: -1px; /* Remove qualquer linha branca residual */
+}
+
+.th-services__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* GRID DE CARDS */
+.th-services__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas perfeitas */
+    gap: 30px;
+    margin-top: 60px;
+}
+
+/* O CARD INDIVIDUAL */
+.th-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 40px;
+    border-radius: 24px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.th-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.04);
+    border-color: var(--color-primary); /* Usa o roxo da Koorvo no hover */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* ÍCONE DENTRO DO CARD */
+.th-card__icon {
+    width: 50px;
+    height: 50px;
+    background: var(--gradient-koorvo);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    color: white;
+}
+
+.th-card h3 {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.th-services__service-text {
+    color: #94a3b8;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 992px) {
+    .th-services__list {
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas em tablets */
+    }
+}
+
+@media (max-width: 600px) {
+    .th-services__list {
+        grid-template-columns: 1fr; /* 1 coluna no celular */
+    }
+}
+
+/* Removemos todos os ::before e ::after de animação */
+/* HERO OCUPANDO A TELA INTEIRA */
+.th-hero {
+    min-height: 100vh; /* Ocupa 100% da altura da tela */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centraliza verticalmente */
+    align-items: center;     /* Centraliza horizontalmente */
+    
+    padding-top: 80px; /* Compensa a altura do seu header fixo para o texto não ficar colado */
+    
+    /* Mantendo o fundo tecnológico que criamos */
+    background: radial-gradient(circle at 50% 50%, rgba(123, 66, 246, 0.15) 0%, transparent 70%);
+    text-align: center;
+    position: relative;
+    overflow: visible; /* Garante que a luz do botão apareça */
+}
+
+.th-hero::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px; /* Altura da transição */
+    background: linear-gradient(to bottom, transparent, #0B0E14);
+    pointer-events: none;
+}
+
+/* Ajuste do Container do Hero */
+.th-hero__container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.th-hero__subtitle {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-primary);
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+
+.th-hero__heading h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.1;
+  margin-bottom: 25px;
+}
+
+.th-hero__heading h1 span {
+  background: var(--gradient-koorvo);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.th-hero__tagline {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+}
+
+.th-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 40px;
+  border-radius: 50px;
+  font-weight: 700;
+  color: white;
+  /* Degradê original do botão */
+  background: var(--gradient-koorvo);
+  cursor: pointer;
+  border: none;
+  text-decoration: none !important;
+  transition: transform 0.3s ease;
+  overflow: visible;
+}
+
+.th-button::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border-radius: 60px;
+  padding: 2px;
+  /* Espessura da luz */
+
+  /* Degradê que acompanha o botão + Ponto de luz branca no meio */
+  background: linear-gradient(90deg,
+      transparent 0%,
+      var(--color-primary) 30%,
+      var(--color-white) 50%,
+      var(--color-secondary) 70%,
+      transparent 100%);
+
+  background-size: 200% 100%;
+  background-position: 200% 0;
+
+  /* Máscara para manter apenas a borda */
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.th-button:hover {
+  transform: scale(1.05);
+}
+
+.th-button:hover::before {
+  opacity: 1;
+  /* Animação de deslize */
+  animation: lightSlide 10s linear infinite;
+  /* Adiciona um brilho que também segue as cores */
+  filter: drop-shadow(0 0 3px var(--color-primary));
+}
+
+@keyframes lightSlide {
+  from {
+    background-position: 200% 0;
+  }
+
+  to {
+    background-position: -200% 0;
+  }
+}
+
+/* Removendo sublinhado de todos os links do site */
+a {
+  text-decoration: none !important;
+  color: inherit;
+}
+
+/* Garantindo que os botões e itens de menu não tenham sublinhado */
+.th-button,
+.th-header__menu-item a,
+.th-footer__navigation-item a,
+.th-portfolio__project-info button {
+  text-decoration: none !important;
+}
+
+/* Caso queira um efeito visual ao passar o mouse sem ser o sublinhado */
+.th-header__menu-item a:hover {
+  color: var(--color-secondary);
+}
+
+
+/* 5. CARDS (GLASSMORPHISM) */
+.th-services {
+  padding: 100px 0;
+}
+
+.th-services__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  max-width: 1200px;
+  margin: 50px auto 0;
+  padding: 0 20px;
+}
+
+.th-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 40px;
+  border-radius: 24px;
+  transition: 0.4s;
+}
+
+.th-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--color-secondary);
+  transform: translateY(-10px);
+}
+
+.th-card-heading img {
+  width: 50px;
+  margin-bottom: 20px;
+}
+
+/* HEADER DA SEÇÃO */
+.th-heading {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+/* O "Badge" superior */
+.th-heading p {
+    color: var(--color-secondary);
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 3px; /* Mais espaçado = mais luxuoso */
+    font-size: 0.85rem;
+    margin-bottom: 12px;
+    display: inline-block;
+    position: relative;
+}
+
+/* Título Principal */
+.th-heading h2 {
+    font-size: clamp(2.5rem, 5vw, 3.8rem); /* Fonte fluida e imponente */
+    color: #ffffff;
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -1px; /* Título "tight" é tendência em SaaS */
+}
+
+/* Efeito de degradê na palavra 'Estratégicas' */
+.th-heading h2 span {
+    background: var(--gradient-koorvo);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* A Tagline (Subtítulo) */
+.th-tagline {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: #94a3b8;
+    max-width: 750px;
+    margin-bottom: 80px;
+    border-left: 3px solid var(--color-primary); /* Uma linha lateral de destaque */
+    padding-left: 25px;
+}
+
+.th-tagline strong {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* SEÇÃO SOBRE */
+.th-about {
+    background-color: #0B0E14;
+    position: relative;
+    padding-bottom: 120px; /* Garante espaço para o degradê */
+}
+
+/* O "Fade" de transição */
+.th-about::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 250px; /* Aumentamos a altura para o degradê ser mais longo e suave */
+    /* Transição do preto do Hero/Sobre para o azulado das Soluções */
+    background: linear-gradient(to bottom, #0B0E14 0%, #0f121a 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.th-about__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Alinhamento do Conteúdo */
+.th-about__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 60px;
+    margin-top: 50px;
+}
+
+.th-about__info {
+    max-width: 800px; /* Limita a largura para a leitura não ficar cansativa */
+}
+
+/* Estilização do Texto */
+.th-about__info-text p {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: #94a3b8;
+    margin-bottom: 30px;
+}
+
+.th-about__info-text p strong {
+    color: #fff;
+    font-weight: 600;
+}
+
+/* CTA - Botão */
+.th-about__cta {
+    margin-top: 40px;
+}
+
+/* Reaproveitando o estilo do seu botão principal */
+.th-about__cta .th-button {
+    display: inline-block;
+    padding: 18px 40px;
+    background: var(--gradient-koorvo);
+    border-radius: 50px;
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 10px 20px rgba(123, 66, 246, 0.2);
+}
+
+.th-about__cta .th-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(123, 66, 246, 0.4);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .th-about__wrapper {
+        flex-direction: column;
+    }
+    
+    .th-about__info-text p {
+        font-size: 1.1rem;
+    }
+}
+
+
+
+/* 7. FOOTER */
+.th-footer {
+  padding: 80px 0 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  text-align: center;
+}
+
+.th-footer__container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.th-footer__social {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 30px 0;
+  list-style: none;
+}
+
+.th-footer__social-item a {
+  font-size: 1.5rem;
+  color: var(--color-gray);
+}
+
+.th-footer__social-item a:hover {
+  color: var(--color-secondary);
+}
