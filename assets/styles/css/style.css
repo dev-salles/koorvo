@@ -11,6 +11,19 @@
   --gradient-koorvo: linear-gradient(90deg, #7B42F6 0%, #00D1FF 100%);
 }
 
+/* Para navegadores modernos */
+::selection {
+    background-color: rgba(123, 66, 246, 0.3); /* Roxo da marca com transparência */
+    color: var(--color-white);
+    text-shadow: 0 0 8px rgba(123, 66, 246, 0.6); /* Leve brilho no texto selecionado */
+}
+
+/* Para o Firefox */
+::-moz-selection {
+    background-color: rgba(123, 66, 246, 0.3);
+    color: var(--color-white);
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
