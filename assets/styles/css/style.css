@@ -48,102 +48,154 @@ li { list-style: none; }
 ::-webkit-scrollbar { width: 3px; }
 ::-webkit-scrollbar-thumb { background-color: var(--color-secondary); }
 
-/* 2. HEADER */
+/* 2. HEADER - CORREÇÃO KOORVO (MOBILE VS DESKTOP) */
 .th-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  background-color: rgba(11, 14, 20, 0.85);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 30px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(11, 14, 20, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 20px 0; /* Reduzi um pouco para ficar mais elegante */
 }
 
 .th-header__container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
+/* Estilo Base da Logo */
 .th-header__logo {
     font-family: "Montserrat", sans-serif;
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 900;
     letter-spacing: -1px;
     color: var(--color-white);
-    transition: 0.3s;
+    display: inline-flex;
+    align-items: center;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Transição suave com 'back' */
 }
 
-/* O detalhe em Ciano igual ao do footer */
+/* O Span com o Gradiente */
 .th-header__logo span {
-    color: var(--color-secondary);
+    /* Mantendo seu gradiente */
+    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    /* A SOLUÇÃO: */
+    display: inline-block; 
+    padding-right: 4px;   /* Cria um espaço extra para o brilho/gradiente não bater na borda da caixa */
+    margin-left: 1px;     /* Garante que ele não cole no 'O' da logo */
+    line-height: 1;       /* Estabiliza a altura da linha */
+    
+    /* Previne cortes em alguns navegadores (Chrome/Edge) */
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    
+    transition: all 0.4s ease;
+}
+
+/* --- ANIMAÇÃO AO PASSAR O MOUSE (HOVER) --- */
+
+/* A Logo inteira cresce um pouco */
+.th-header__logo:hover {
+    transform: scale(1.05);
+}
+
+/* O ponto ganha um brilho intenso e uma leve rotação */
+.th-header__logo:hover span {
+    filter: drop-shadow(0 0 12px rgba(0, 209, 255, 0.5));
+    transform: scale(1.0);
+    /* Se o ponto sumir no hover, remova o translateY ou aumente o padding superior */
+}
+
+/* --- ICONE HAMBURGUER (Escondido no Desktop) --- */
+.th-header__icon {
+    width: 30px;
+    height: 24px;
+    cursor: pointer;
+    display: none; /* ESCONDE POR PADRÃO NO DESKTOP */
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 1100;
+}
+
+.th-header__icon-bar,
+.th-header__icon-bar::before,
+.th-header__icon-bar::after {
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-white);
     transition: 0.3s;
 }
 
-/* Efeito de hover sutil para a logo */
-.th-header__logo:hover {
-    transform: scale(1.02);
+/* --- MENU NAVIGATION (Desktop Style) --- */
+.th-header__navigation {
+    display: block;
 }
 
-.th-header__logo:hover span {
-    /* Um leve brilho no ponto ao passar o mouse */
-    text-shadow: 0 0 10px var(--color-secondary);
+.th-header__menu-list {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+    align-items: center;
 }
 
-.th-header__icon {
-  width: 24px;
-  height: 21px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.th-header__menu-item a {
+    color: var(--color-white);
+    font-weight:600;
+    font-size: 0.95rem;
+    transition: 0.3s;
+    letter-spacing: 1px;
 }
 
-.th-header__icon-bar {
-  width: 100%;
-  height: 3px;
-  background-color: var(--color-white);
-  display: block;
-  position: relative;
+.th-header__menu-item a:hover {
+    color: var(--color-secondary);
 }
 
-.th-header__icon-bar::before {
-  content: "";
-  position: absolute;
-  top: -9px;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background-color: var(--color-white);
-}
+/* --- COMPORTAMENTO MOBILE (Abaixo de 992px) --- */
+@media (max-width: 992px) {
+    .th-header__icon {
+        display: flex; 
+    }
 
-.th-header__icon-bar::after {
-  content: "";
-  position: absolute;
-  bottom: -9px;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background-color: var(--color-white);
-}
+    .th-header__overlay {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Começa fora da tela */
+        width: 100%;
+        height: 100vh;
+        background: var(--color-bg);
+        display: flex; /* Mudamos de none para flex para controlar via JS/CSS */
+        justify-content: center;
+        align-items: center;
+        transition: 0.5s ease-in-out;
+        z-index: 1050;
+    }
 
-.th-header__overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: none;
-}
+    /* Quando o menu estiver aberto (via classe JS) */
+    .th-header__overlay.active {
+        right: 0;
+    }
 
-.th-header__menu-list { display: flex; gap: 30px; list-style: none; }
-.th-header__menu-item a { color: var(--color-white); font-weight: 500; transition: 0.3s; }
-.th-header__menu-item a:hover { color: var(--color-secondary); }
+    .th-header__menu-list {
+        flex-direction: column;
+        text-align: center;
+        gap: 35px;
+    }
+
+    .th-header__menu-item a {
+        font-size: 1.8rem;
+    }
+}
 
 /* 3. HERO SECTION */
 .th-hero {
@@ -193,10 +245,18 @@ li { list-style: none; }
 .th-hero__subtitle {
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: var(--color-primary);
   font-weight: 800;
   margin-bottom: 20px;
   display: block;
+
+  /* Aplicação do Gradiente Koorvo */
+  background: linear-gradient(45deg, var(--color-primary) 40%, var(--color-secondary) 60%);
+  -webkit-background-clip: text; 
+  background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  
+  /* Garantia para browsers antigos */
+  color: var(--color-primary); 
 }
 
 .th-hero__heading h1 {
@@ -577,7 +637,11 @@ li { list-style: none; }
 }
 
 .th-footer__logo span {
-    color: var(--color-secondary);
+    /* Aplicação do Gradiente */
+    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .th-footer__description {
