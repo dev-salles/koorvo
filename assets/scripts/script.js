@@ -1,4 +1,4 @@
-// Função para controlar o scroll do body quando a modal estiver aberta
+// Função 
 function toggleModalScroll(isOpen) {
     if (isOpen) {
         // 1. Calcula a largura da scrollbar para evitar saltos de layout
