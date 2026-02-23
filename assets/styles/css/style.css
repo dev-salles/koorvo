@@ -82,7 +82,7 @@ li {
   background-color: rgba(11, 14, 20, 0.85);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 20px 0;
+  padding: 30px 0;
   /* Reduzi um pouco para ficar mais elegante */
   transition: all 0.3s ease;
 }
@@ -1044,6 +1044,29 @@ li {
   text-decoration: none;
   overflow: visible;
   /* Para permitir o brilho da borda */
+
+  /* Estado Inicial: Escondido abaixo da tela */
+  transform: translateY(150px) scale(0.8);
+  opacity: 0;
+  pointer-events: none; /* Impede cliques enquanto invisível */
+  
+  /* Transição suave para a volta */
+  transition: 
+    transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+    opacity 0.4s ease;
+  will-change: transform, opacity; /* Otimiza a performance da animação */
+}
+
+/* Estado Ativo: Quando a classe 'show' for adicionada via JS */
+.th-whatsapp-float.show {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Mantém o efeito de hover funcionando apenas quando visível */
+.th-whatsapp-float.show:hover {
+  transform: translateY(-5px) scale(1.1) rotate(5deg);
 }
 
 /* O anel de luz (mesmo efeito do primeiro botão) */
