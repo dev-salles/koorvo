@@ -581,6 +581,11 @@ li {
     text-align: center;
     gap: 40px;
   }
+
+  .th-about__cta .th-button {
+    display: block;
+    text-align: center;
+  }
 }
 
 /* 6. SEÇÃO SERVIÇOS - ATUALIZAÇÃO KOORVO */
