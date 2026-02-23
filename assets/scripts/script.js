@@ -1,22 +1,49 @@
+// Função para controlar o scroll do body quando a modal estiver aberta
+function toggleModalScroll(isOpen) {
+    if (isOpen) {
+        // 1. Calcula a largura da scrollbar para evitar saltos de layout
+        const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+        body.style.setProperty('--scrollbar-width', `${scrollbarWidth}px`);
+
+        // 2. Trava o scroll
+        body.classList.add('no-scroll');
+    } else {
+        // 3. Libera o scroll
+        body.classList.remove('no-scroll');
+        body.style.removeProperty('--scrollbar-width');
+    }
+}
+
 // Comportamento do menu mobile
 const menuIcon = document.querySelector('.j_menu_icon');
 const menuOverlay = document.querySelector('.j_close');
 const menu = document.querySelector('.j_menu');
 const menuItems = [document.querySelector(".j_logo"), ...menu.querySelectorAll('.j_menu_item')];
+const body = document.body;
 
 menuIcon.addEventListener('click', () => {
     menu.classList.toggle('menu-open');
+    toggleModalScroll(menu.classList.contains('menu-open'));
 });
 
 menuOverlay.addEventListener('click', ({ target }) => {
     if (menu.classList.contains('menu-open') && target.classList.contains('j_close')) {
         menu.classList.remove('menu-open');
+        toggleModalScroll(false);
     }
 });
+
+menuOverlay.addEventListener('touchmove', function (e) {
+    // Se a modal não tiver scroll interno, bloqueia tudo
+    if (this.scrollHeight <= this.clientHeight) {
+        e.preventDefault();
+    }
+}, { passive: false });
 
 menuItems.forEach(item => {
     item.addEventListener('click', () => {
         menu.classList.remove('menu-open');
+        toggleModalScroll(false);
     });
 });
 
@@ -88,3 +115,6 @@ document.addEventListener('mousemove', (e) => {
         clearTimeout(scrollTimeout);
     }
 });
+
+const modals = document.querySelectorAll('.j_modal');
+

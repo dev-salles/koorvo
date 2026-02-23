@@ -24,6 +24,7 @@
 ::-moz-selection {
   background-color: rgba(123, 66, 246, 0.3);
   color: var(--color-white);
+  text-shadow: 0 0 8px rgba(123, 66, 246, 0.6);
 }
 
 *,
@@ -44,6 +45,12 @@ body {
   font-family: "Plus Jakarta Sans", sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
+}
+
+body.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+  padding-right: 3px;
 }
 
 h1,
