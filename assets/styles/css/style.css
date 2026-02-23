@@ -95,6 +95,52 @@ li { list-style: none; }
     text-shadow: 0 0 10px var(--color-secondary);
 }
 
+.th-header__icon {
+  width: 24px;
+  height: 21px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.th-header__icon-bar {
+  width: 100%;
+  height: 3px;
+  background-color: var(--color-white);
+  display: block;
+  position: relative;
+}
+
+.th-header__icon-bar::before {
+  content: "";
+  position: absolute;
+  top: -9px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--color-white);
+}
+
+.th-header__icon-bar::after {
+  content: "";
+  position: absolute;
+  bottom: -9px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--color-white);
+}
+
+.th-header__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
 .th-header__menu-list { display: flex; gap: 30px; list-style: none; }
 .th-header__menu-item a { color: var(--color-white); font-weight: 500; transition: 0.3s; }
 .th-header__menu-item a:hover { color: var(--color-secondary); }
@@ -475,7 +521,7 @@ li { list-style: none; }
 
 .th-contact__content { position: relative; z-index: 1; }
 .th-contact__content h2 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; line-height: 1.2; margin-bottom: 20px; }
-.th-contact__content h2 span { background: var(--gradient-koorvo); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.th-contact__content h2 span { background: var(--gradient-koorvo); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; -webkit-text-fill-color: transparent; }
 .th-contact__content p { font-size: 1.2rem; color: #94a3b8; max-width: 600px; margin: 0 auto 40px; }
 
 .th-button--whatsapp {
@@ -490,6 +536,7 @@ li { list-style: none; }
   background: linear-gradient(90deg, transparent 0%, #128C7E 30%, #ffffff 50%, #25D366 70%, transparent 100%);
   background-size: 200% 100%; background-position: 200% 0;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0; transition: opacity 0.4s ease;
 }
 
@@ -548,25 +595,41 @@ li { list-style: none; }
 }
 
 .th-social-item {
+    position: relative; /* Necessário para posicionar o gradiente */
     width: 50px;
     height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 12px;
     color: var(--color-white);
     font-size: 1.2rem;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* Criamos uma camada para o gradiente */
+.th-social-item::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--gradient-koorvo);
+    opacity: 0; /* Começa invisível */
+    transition: opacity 0.4s ease;
+    z-index: -1; /* Fica atrás do ícone/texto */
 }
 
 .th-social-item:hover {
-    background: var(--gradient-koorvo);
-    border-color: transparent;
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(123, 66, 246, 0.2);
     color: white;
+}
+
+/* No hover, mostramos o gradiente suavemente */
+.th-social-item:hover::before {
+    opacity: 1;
 }
 
 /* Rodapé Inferior */
