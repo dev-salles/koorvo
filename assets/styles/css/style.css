@@ -251,7 +251,7 @@ li {
     position: absolute;
     top: 0;
     right: -100%;
-    padding: 120px 40px 20px 40px;
+    padding: 120px 20px 20px 20px;
     transition: right 0.3s ease;
     border-left: 1px solid rgba(255, 255, 255, 0.05);
     cursor: default;
@@ -266,8 +266,25 @@ li {
   }
 
   .th-header__menu-item a {
-    font-size: 1.8rem;
-    font-weight: 700;
+    font-size: 1.6rem;
+    font-weight: 400;
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .th-header__menu-item a::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .th-header__menu-item a:hover::before {
+    background-color: var(--color-secondary);
   }
 
   .th-header__navigation.menu-open .th-header__icon-bar {
@@ -286,7 +303,7 @@ li {
 
   .th-header__navigation.menu-open .th-header__overlay {
     visibility: visible;
-    opacity: 1; 
+    opacity: 1;
   }
 
   .th-header__navigation.menu-open .th-header__menu-container {
@@ -557,6 +574,15 @@ li {
   }
 }
 
+/* RESPONSIVIDADE GERAL */
+@media (max-width: 992px) {
+  .th-about__wrapper {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 40px;
+  }
+}
+
 /* 6. SEÇÃO SERVIÇOS - ATUALIZAÇÃO KOORVO */
 .th-services {
   background-color: var(--color-bg-alt);
@@ -628,6 +654,16 @@ li {
   font-weight: 900;
   line-height: 1.1;
   letter-spacing: -1px;
+}
+
+@media (max-width: 992px) {
+  .th-heading {
+    text-align: center;
+  }
+
+  .th-heading p {
+    justify-content: center;
+  }
 }
 
 .th-tagline {
@@ -729,6 +765,14 @@ li {
   .th-card {
     min-height: auto;
     padding: 35px;
+    max-width: 560px;
+    margin-inline: auto
+  }
+}
+
+@media (max-width: 576px) {
+  .th-card {
+    padding: 25px;
   }
 }
 
@@ -844,6 +888,18 @@ li {
   opacity: 1;
   animation: lightSlide 8s linear infinite;
   filter: drop-shadow(0 0 5px #25D366);
+}
+
+@media (max-width: 576px) {
+  .th-contact__box {
+    padding: 60px 20px;
+    border-radius: 25px;
+  }
+
+  .th-button--whatsapp {
+    padding: 18px 35px;
+    font-size: 1rem;
+  }
 }
 
 /* 7. FOOTER */
@@ -978,9 +1034,16 @@ li {
   }
 
   .th-footer__bottom {
-    flex-direction: column;
-    gap: 20px;
+    flex-direction: column-reverse;
+    gap: 30px;
     text-align: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .th-footer__links {
+    flex-direction: column;
+    gap: 15px;
   }
 }
 
@@ -1055,13 +1118,15 @@ li {
   /* Estado Inicial: Escondido abaixo da tela */
   transform: translateY(150px) scale(0.8);
   opacity: 0;
-  pointer-events: none; /* Impede cliques enquanto invisível */
-  
+  pointer-events: none;
+  /* Impede cliques enquanto invisível */
+
   /* Transição suave para a volta */
-  transition: 
-    transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+  transition:
+    transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275),
     opacity 0.4s ease;
-  will-change: transform, opacity; /* Otimiza a performance da animação */
+  will-change: transform, opacity;
+  /* Otimiza a performance da animação */
 }
 
 /* Estado Ativo: Quando a classe 'show' for adicionada via JS */
@@ -1126,14 +1191,5 @@ li {
     height: 55px;
     bottom: 20px;
     right: 20px;
-  }
-}
-
-/* RESPONSIVIDADE GERAL */
-@media (max-width: 992px) {
-  .th-about__wrapper {
-    flex-direction: column;
-    text-align: center;
-    gap: 40px;
   }
 }

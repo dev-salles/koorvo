@@ -1,5 +1,5 @@
-// Função 
-function toggleModalScroll(isOpen) {
+// Função para controlar o scroll do body quando a modal estiver aberta
+const toggleModalScroll = (isOpen) => {
     if (isOpen) {
         // 1. Calcula a largura da scrollbar para evitar saltos de layout
         const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
@@ -116,5 +116,11 @@ document.addEventListener('mousemove', (e) => {
     }
 });
 
-const modals = document.querySelectorAll('.j_modal');
+// --------------------------------------------------------------------------------------
 
+// Atualiza o ano no rodapé automaticamente
+const copyrightYear = document.querySelector('.j_copyright_year');
+
+if (copyrightYear) {
+    copyrightYear.textContent = new Date().getFullYear();
+}
