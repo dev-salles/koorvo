@@ -13,24 +13,30 @@
 
 /* Para navegadores modernos */
 ::selection {
-    background-color: rgba(123, 66, 246, 0.3); /* Roxo da marca com transparência */
-    color: var(--color-white);
-    text-shadow: 0 0 8px rgba(123, 66, 246, 0.6); /* Leve brilho no texto selecionado */
+  background-color: rgba(123, 66, 246, 0.3);
+  /* Roxo da marca com transparência */
+  color: var(--color-white);
+  text-shadow: 0 0 8px rgba(123, 66, 246, 0.6);
+  /* Leve brilho no texto selecionado */
 }
 
 /* Para o Firefox */
 ::-moz-selection {
-    background-color: rgba(123, 66, 246, 0.3);
-    color: var(--color-white);
+  background-color: rgba(123, 66, 246, 0.3);
+  color: var(--color-white);
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   background-color: var(--color-bg);
@@ -40,161 +46,216 @@ body {
   overflow-x: hidden;
 }
 
-h1, h2, h3 { font-family: "Montserrat", sans-serif; color: var(--color-white); }
-a { text-decoration: none !important; color: inherit; transition: 0.3s; }
-li { list-style: none; }
+h1,
+h2,
+h3 {
+  font-family: "Montserrat", sans-serif;
+  color: var(--color-white);
+}
+
+a {
+  text-decoration: none !important;
+  color: inherit;
+  transition: 0.3s;
+}
+
+li {
+  list-style: none;
+}
 
 /* Scrollbar */
-::-webkit-scrollbar { width: 3px; }
-::-webkit-scrollbar-thumb { background-color: var(--color-secondary); }
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-secondary);
+}
 
 /* 2. HEADER - CORREÇÃO KOORVO (MOBILE VS DESKTOP) */
 .th-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    background-color: rgba(11, 14, 20, 0.85);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 20px 0; /* Reduzi um pouco para ficar mais elegante */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgba(11, 14, 20, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 20px 0;
+  /* Reduzi um pouco para ficar mais elegante */
+  transition: all 0.3s ease;
+}
+
+.th-header.scrolling {
+  padding-block: 10px;
 }
 
 .th-header__container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* Estilo Base da Logo */
 .th-header__logo {
-    font-family: "Montserrat", sans-serif;
-    font-size: 2rem;
-    font-weight: 900;
-    letter-spacing: -1px;
-    color: var(--color-white);
-    display: inline-flex;
-    align-items: center;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Transição suave com 'back' */
+  font-family: "Montserrat", sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: -1px;
+  color: var(--color-white);
+  display: inline-flex;
+  align-items: center;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  /* Transição suave com 'back' */
+  line-height: 1;
+  position: relative;
+  z-index: 120;
 }
 
 /* O Span com o Gradiente */
 .th-header__logo span {
-    /* Mantendo seu gradiente */
-    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+  /* Mantendo seu gradiente */
+  background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 
-    /* A SOLUÇÃO: */
-    display: inline-block; 
-    padding-right: 4px;   /* Cria um espaço extra para o brilho/gradiente não bater na borda da caixa */
-    margin-left: 1px;     /* Garante que ele não cole no 'O' da logo */
-    line-height: 1;       /* Estabiliza a altura da linha */
-    
-    /* Previne cortes em alguns navegadores (Chrome/Edge) */
-    -webkit-box-decoration-break: clone;
-    box-decoration-break: clone;
-    
-    transition: all 0.4s ease;
+  /* A SOLUÇÃO: */
+  display: inline-block;
+  padding-right: 4px;
+  /* Cria um espaço extra para o brilho/gradiente não bater na borda da caixa */
+  margin-left: 1px;
+  /* Garante que ele não cole no 'O' da logo */
+  line-height: 1;
+  /* Estabiliza a altura da linha */
+
+  /* Previne cortes em alguns navegadores (Chrome/Edge) */
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+
+  transition: all 0.4s ease;
 }
 
 /* --- ANIMAÇÃO AO PASSAR O MOUSE (HOVER) --- */
 
 /* A Logo inteira cresce um pouco */
 .th-header__logo:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 /* O ponto ganha um brilho intenso e uma leve rotação */
 .th-header__logo:hover span {
-    filter: drop-shadow(0 0 12px rgba(0, 209, 255, 0.5));
-    transform: scale(1.0);
-    /* Se o ponto sumir no hover, remova o translateY ou aumente o padding superior */
+  filter: drop-shadow(0 0 12px rgba(0, 209, 255, 0.5));
+  transform: scale(1.0);
+  /* Se o ponto sumir no hover, remova o translateY ou aumente o padding superior */
 }
 
 /* --- ICONE HAMBURGUER (Escondido no Desktop) --- */
 .th-header__icon {
-    width: 30px;
-    height: 24px;
-    cursor: pointer;
-    display: none; /* ESCONDE POR PADRÃO NO DESKTOP */
-    flex-direction: column;
-    justify-content: space-between;
-    z-index: 1100;
+  width: 30px;
+  height: 24px;
+  cursor: pointer;
+  display: none;
+  /* ESCONDE POR PADRÃO NO DESKTOP */
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 120;
 }
 
 .th-header__icon-bar,
 .th-header__icon-bar::before,
 .th-header__icon-bar::after {
-    width: 100%;
-    height: 3px;
-    background-color: var(--color-white);
-    transition: 0.3s;
+  width: 100%;
+  height: 3px;
+  background-color: var(--color-white);
+  transition: 0.3s;
 }
 
-/* --- MENU NAVIGATION (Desktop Style) --- */
-.th-header__navigation {
-    display: block;
+.th-header__icon-bar {
+  position: relative;
+}
+
+.th-header__icon-bar::before {
+  content: "";
+  position: absolute;
+  top: -9px;
+  left: 0;
+}
+
+.th-header__icon-bar::after {
+  content: "";
+  position: absolute;
+  bottom: -9px;
+  left: 0;
 }
 
 .th-header__menu-list {
-    display: flex;
-    gap: 40px;
-    list-style: none;
-    align-items: center;
+  display: flex;
+  gap: 40px;
+  list-style: none;
+  align-items: center;
 }
 
 .th-header__menu-item a {
-    color: var(--color-white);
-    font-weight:600;
-    font-size: 0.95rem;
-    transition: 0.3s;
-    letter-spacing: 1px;
+  color: var(--color-white);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: 0.3s;
+  letter-spacing: 1px;
 }
 
 .th-header__menu-item a:hover {
-    color: var(--color-secondary);
+  color: var(--color-secondary);
 }
 
 /* --- COMPORTAMENTO MOBILE (Abaixo de 992px) --- */
 @media (max-width: 992px) {
-    .th-header__icon {
-        display: flex; 
-    }
+  .th-header__logo {
+    font-size: 1.6em;
+  }
 
-    .th-header__overlay {
-        position: fixed;
-        top: 0;
-        right: -100%; /* Começa fora da tela */
-        width: 100%;
-        height: 100vh;
-        background: var(--color-bg);
-        display: flex; /* Mudamos de none para flex para controlar via JS/CSS */
-        justify-content: center;
-        align-items: center;
-        transition: 0.5s ease-in-out;
-        z-index: 1050;
-    }
+  .th-header__icon {
+    display: flex;
+  }
 
-    /* Quando o menu estiver aberto (via classe JS) */
-    .th-header__overlay.active {
-        right: 0;
-    }
+  .th-header__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 110;
+    cursor: pointer;
+  }
 
-    .th-header__menu-list {
-        flex-direction: column;
-        text-align: center;
-        gap: 35px;
-    }
+  .th-header__menu-container {
+    width: 100%;
+    height: 100%;
+    max-width: 600px;
+    background-color: var(--color-bg-alt);
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 120px 40px 20px 40px;
+  }
 
-    .th-header__menu-item a {
-        font-size: 1.8rem;
-    }
+  .th-header__menu-list {
+    /* text-align: center; */
+    flex-direction: column;
+    align-items: stretch;
+    gap: 30px;
+    overflow-y: auto;
+  }
+
+  .th-header__menu-item a {
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
 }
 
 /* 3. HERO SECTION */
@@ -240,7 +301,13 @@ li { list-style: none; }
   z-index: 1;
 }
 
-.th-hero__container { width: 100%; max-width: 1100px; padding: 0 20px; position: relative; z-index: 2; }
+.th-hero__container {
+  width: 100%;
+  max-width: 1100px;
+  padding: 0 20px;
+  position: relative;
+  z-index: 2;
+}
 
 .th-hero__subtitle {
   text-transform: uppercase;
@@ -251,12 +318,12 @@ li { list-style: none; }
 
   /* Aplicação do Gradiente Koorvo */
   background: linear-gradient(45deg, var(--color-primary) 40%, var(--color-secondary) 60%);
-  -webkit-background-clip: text; 
+  -webkit-background-clip: text;
   background-clip: text;
-  -webkit-text-fill-color: transparent; 
-  
+  -webkit-text-fill-color: transparent;
+
   /* Garantia para browsers antigos */
-  color: var(--color-primary); 
+  color: var(--color-primary);
 }
 
 .th-hero__heading h1 {
@@ -300,7 +367,10 @@ li { list-style: none; }
 .th-button::before {
   content: "";
   position: absolute;
-  top: -10px; left: -10px; right: -10px; bottom: -10px;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
   border-radius: 60px;
   padding: 2px;
   background: linear-gradient(90deg, transparent 0%, var(--color-primary) 30%, var(--color-white) 50%, var(--color-secondary) 70%, transparent 100%);
@@ -315,7 +385,10 @@ li { list-style: none; }
   pointer-events: none;
 }
 
-.th-button:hover { transform: scale(1.05); }
+.th-button:hover {
+  transform: scale(1.05);
+}
+
 .th-button:hover::before {
   opacity: 1;
   animation: lightSlide 10s linear infinite;
@@ -323,8 +396,13 @@ li { list-style: none; }
 }
 
 @keyframes lightSlide {
-  from { background-position: 200% 0; }
-  to { background-position: -200% 0; }
+  from {
+    background-position: 200% 0;
+  }
+
+  to {
+    background-position: -200% 0;
+  }
 }
 
 /* 5. SEÇÃO SOBRE */
@@ -338,10 +416,11 @@ li { list-style: none; }
 .th-about::after {
   content: "";
   position: absolute;
-  bottom: 0; 
-  left: 0; 
-  width: 100%; 
-  height: 500px; /* Aumentamos de 350px para 500px para ser mais gradual */
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 500px;
+  /* Aumentamos de 350px para 500px para ser mais gradual */
   /* O gradiente agora começa a mudar muito antes de chegar no fim da seção */
   background: linear-gradient(to bottom, transparent 0%, var(--color-bg-alt) 100%);
   pointer-events: none;
@@ -363,56 +442,83 @@ li { list-style: none; }
   gap: 80px;
 }
 
-.th-about__info { flex: 1; max-width: 600px; }
-.th-about__info-text p { font-size: 1.2rem; line-height: 1.8; color: var(--color-gray); margin-bottom: 25px; }
-.th-about__info-text p:first-child { color: var(--color-white); font-size: 1.4rem; font-weight: 500; }
+.th-about__info {
+  flex: 1;
+  max-width: 600px;
+}
+
+.th-about__info-text p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--color-gray);
+  margin-bottom: 25px;
+}
+
+.th-about__info-text p:first-child {
+  color: var(--color-white);
+  font-size: 1.4rem;
+  font-weight: 500;
+}
 
 /* Ajuste da Imagem na Seção Sobre */
 
 .th-about__image-wrapper {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-width: 0; /* Evita que o flexbox se expanda além do necessário */
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 0;
+  /* Evita que o flexbox se expanda além do necessário */
 }
 
 .th-about__image-content {
-    width: 100%;
-    /* Reduzi o max-width de 500px para 420px para um visual mais equilibrado */
-    max-width: 420px; 
-    aspect-ratio: 1 / 1; /* Mantém o card perfeitamente quadrado se desejar */
-    padding: 60px; /* Aumentei o padding para a logo "respirar" mais dentro do card */
-    background: rgba(255, 255, 255, 0.02);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-    transition: all 0.5s ease;
+  width: 100%;
+  /* Reduzi o max-width de 500px para 420px para um visual mais equilibrado */
+  max-width: 420px;
+  aspect-ratio: 1 / 1;
+  /* Mantém o card perfeitamente quadrado se desejar */
+  padding: 60px;
+  /* Aumentei o padding para a logo "respirar" mais dentro do card */
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  transition: all 0.5s ease;
 }
 
 /* Controle direto da Logo */
 .th-about__img-card img {
-    width: 100%;
-    height: auto;
-    max-height: 250px; /* Garante que a logo não fique alta demais */
-    object-fit: contain; /* Mantém as proporções da logo sem distorcer */
-    filter: drop-shadow(0 0 30px rgba(0, 209, 255, 0.2)); /* Brilho no tom Ciano da Koorvo */
+  width: 100%;
+  height: auto;
+  max-height: 250px;
+  /* Garante que a logo não fique alta demais */
+  object-fit: contain;
+  /* Mantém as proporções da logo sem distorcer */
+  filter: drop-shadow(0 0 30px rgba(0, 209, 255, 0.2));
+  /* Brilho no tom Ciano da Koorvo */
 }
 
 /* Efeito Hover Refinado */
 .th-about__image-content:hover {
-    transform: translateY(-10px) rotate(-1deg);
-    border-color: var(--color-secondary);
-    background: rgba(255, 255, 255, 0.04);
+  transform: translateY(-10px) rotate(-1deg);
+  border-color: var(--color-secondary);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 @keyframes pulseGlow {
-  0% { transform: scale(0.95); opacity: 0.5; }
-  100% { transform: scale(1.1); opacity: 0.8; }
+  0% {
+    transform: scale(0.95);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
 }
 
 /* 6. SEÇÃO SERVIÇOS - ATUALIZAÇÃO KOORVO */
@@ -422,7 +528,7 @@ li { list-style: none; }
   position: relative;
   z-index: 2;
   overflow: hidden;
-  margin-top: -1px; 
+  margin-top: -1px;
 }
 
 .th-services::before {
@@ -448,109 +554,142 @@ li { list-style: none; }
   pointer-events: none;
 }
 
-.th-services__container { 
-  max-width: 1200px; 
-  margin: 0 auto; 
-  padding: 0 20px; 
-  position: relative; 
-  z-index: 5; 
+.th-services__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 5;
 }
 
-.th-heading { margin-bottom: 50px; text-align: left; }
+.th-heading {
+  margin-bottom: 50px;
+  text-align: left;
+}
+
 .th-heading p {
-  color: var(--color-secondary); 
-  text-transform: uppercase; 
-  font-weight: 800; 
+  color: var(--color-secondary);
+  text-transform: uppercase;
+  font-weight: 800;
   letter-spacing: 4px;
-  font-size: 0.8rem; 
-  margin-bottom: 16px; 
-  display: flex; 
-  align-items: center; 
+  font-size: 0.8rem;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
   gap: 10px;
 }
-.th-heading p::after { content: ""; width: 40px; height: 1px; background: var(--color-secondary); display: inline-block; }
-.th-heading h2 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 900; line-height: 1.1; letter-spacing: -1px; }
+
+.th-heading p::after {
+  content: "";
+  width: 40px;
+  height: 1px;
+  background: var(--color-secondary);
+  display: inline-block;
+}
+
+.th-heading h2 {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -1px;
+}
 
 .th-tagline {
-  font-size: 1.15rem; 
-  line-height: 1.7; 
-  color: #94a3b8; 
-  max-width: 700px; 
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #94a3b8;
+  max-width: 700px;
   margin-bottom: 80px;
-  border-left: 4px solid var(--color-primary); 
+  border-left: 4px solid var(--color-primary);
   padding: 5px 0 5px 25px;
   background: linear-gradient(to right, rgba(123, 66, 246, 0.05), transparent);
 }
 
 /* GRID ATUALIZADO PELA KOORVO: Força 2x2 para maior harmonia */
-.th-services__list { 
-  display: grid; 
-  grid-template-columns: repeat(2, 1fr); 
-  gap: 30px; 
+.th-services__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
 }
 
 .th-card {
-  background: rgba(255, 255, 255, 0.01); 
+  background: rgba(255, 255, 255, 0.01);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 45px; /* Ajuste sutil no respiro interno */
-  border-radius: 30px; 
-  position: relative; 
+  padding: 45px;
+  /* Ajuste sutil no respiro interno */
+  border-radius: 30px;
+  position: relative;
   transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  min-height: 300px; /* Garante que todos os cards fiquem alinhados */
+  min-height: 300px;
+  /* Garante que todos os cards fiquem alinhados */
 }
 
 .th-card::before {
-  content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: radial-gradient(circle at top left, rgba(123, 66, 246, 0.1), transparent 50%);
-  opacity: 0; transition: opacity 0.5s ease;
+  opacity: 0;
+  transition: opacity 0.5s ease;
 }
 
 .th-card:hover {
-  transform: translateY(-15px); 
-  background: rgba(255, 255, 255, 0.03); 
+  transform: translateY(-15px);
+  background: rgba(255, 255, 255, 0.03);
   border-color: rgba(123, 66, 246, 0.4);
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 0 0 20px rgba(123, 66, 246, 0.1);
 }
 
-.th-card:hover::before { opacity: 1; }
-
-.th-card__icon {
-  width: 55px; height: 55px; /* Tamanho otimizado para os novos SVGs */
-  background: var(--gradient-koorvo); 
-  border-radius: 14px;
-  display: flex; align-items: center; justify-content: center; 
-  margin-bottom: 25px;
-  color: white; 
-  box-shadow: 0 10px 20px rgba(123, 66, 246, 0.25); 
-  position: relative; z-index: 2;
+.th-card:hover::before {
+  opacity: 1;
 }
 
-.th-card h3 { 
-  font-size: 1.5rem; 
-  margin-bottom: 15px; 
-  font-weight: 700; 
-  position: relative; 
-  z-index: 2; 
+.th-card__icon {
+  width: 55px;
+  height: 55px;
+  /* Tamanho otimizado para os novos SVGs */
+  background: var(--gradient-koorvo);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+  color: white;
+  box-shadow: 0 10px 20px rgba(123, 66, 246, 0.25);
+  position: relative;
+  z-index: 2;
+}
+
+.th-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+  position: relative;
+  z-index: 2;
   color: var(--color-white);
 }
 
 /* Ajuste na classe de texto que você enviou no HTML */
-.th-services__service-text { 
-  color: #94a3b8; 
-  font-size: 1.05rem; 
-  line-height: 1.6; 
-  position: relative; 
-  z-index: 2; 
+.th-services__service-text {
+  color: #94a3b8;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  position: relative;
+  z-index: 2;
 }
 
 /* RESPONSIVIDADE: Retorna para 1 coluna em telas menores */
 @media (max-width: 900px) {
-  .th-services__list { 
-    grid-template-columns: 1fr; 
+  .th-services__list {
+    grid-template-columns: 1fr;
   }
+
   .th-card {
     min-height: auto;
     padding: 35px;
@@ -565,258 +704,377 @@ li { list-style: none; }
   overflow: hidden;
 }
 
-.th-contact__container { max-width: 1000px; margin: 0 auto; padding: 0 20px; text-align: center; position: relative; z-index: 5; }
+.th-contact__container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+  text-align: center;
+  position: relative;
+  z-index: 5;
+}
 
 .th-contact__box {
   background: linear-gradient(135deg, rgba(123, 66, 246, 0.1) 0%, rgba(0, 209, 255, 0.05) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.08); padding: 80px 40px; border-radius: 40px;
-  position: relative; overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 80px 40px;
+  border-radius: 40px;
+  position: relative;
+  overflow: hidden;
 }
 
 .th-contact__box::before {
-  content: ""; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
   background: radial-gradient(circle, rgba(123, 66, 246, 0.15) 0%, transparent 60%);
-  pointer-events: none; z-index: 0;
+  pointer-events: none;
+  z-index: 0;
 }
 
-.th-contact__content { position: relative; z-index: 1; }
-.th-contact__content h2 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; line-height: 1.2; margin-bottom: 20px; }
-.th-contact__content h2 span { background: var(--gradient-koorvo); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; -webkit-text-fill-color: transparent; }
-.th-contact__content p { font-size: 1.2rem; color: #94a3b8; max-width: 600px; margin: 0 auto 40px; }
+.th-contact__content {
+  position: relative;
+  z-index: 1;
+}
+
+.th-contact__content h2 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.th-contact__content h2 span {
+  background: var(--gradient-koorvo);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.th-contact__content p {
+  font-size: 1.2rem;
+  color: #94a3b8;
+  max-width: 600px;
+  margin: 0 auto 40px;
+}
 
 .th-button--whatsapp {
-  position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 12px;
-  padding: 20px 45px; border-radius: 50px; color: #fff; font-weight: 800; font-size: 1.1rem;
-  background: #25D366; cursor: pointer; border: none; transition: transform 0.3s ease; overflow: visible;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 20px 45px;
+  border-radius: 50px;
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.1rem;
+  background: #25D366;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.3s ease;
+  overflow: visible;
 }
 
 .th-button--whatsapp::before {
-  content: ""; position: absolute; top: -10px; left: -10px; right: -10px; bottom: -10px;
-  border-radius: 60px; padding: 2px;
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border-radius: 60px;
+  padding: 2px;
   background: linear-gradient(90deg, transparent 0%, #128C7E 30%, #ffffff 50%, #25D366 70%, transparent 100%);
-  background-size: 200% 100%; background-position: 200% 0;
+  background-size: 200% 100%;
+  background-position: 200% 0;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0; transition: opacity 0.4s ease;
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
-.th-button--whatsapp:hover { transform: scale(1.05); background: #20ba5a; }
-.th-button--whatsapp:hover::before { opacity: 1; animation: lightSlide 8s linear infinite; filter: drop-shadow(0 0 5px #25D366); }
+.th-button--whatsapp:hover {
+  transform: scale(1.05);
+  background: #20ba5a;
+}
+
+.th-button--whatsapp:hover::before {
+  opacity: 1;
+  animation: lightSlide 8s linear infinite;
+  filter: drop-shadow(0 0 5px #25D366);
+}
 
 /* 7. FOOTER */
 /* 7. FOOTER - CLEAN TECH STYLE */
 .th-footer {
-    padding: 100px 0 20px;
-    background-color: var(--color-bg); /* Fundo sólido e limpo */
-    position: relative;
-    overflow: hidden;
-    border-top: 1px solid rgba(255, 255, 255, 0.05); /* Linha divisória sutil */
+  padding: 100px 0 20px;
+  background-color: var(--color-bg);
+  /* Fundo sólido e limpo */
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  /* Linha divisória sutil */
 }
 
 /* Removido o pseudo-elemento ::before que continha o glow */
 
 .th-footer__container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    position: relative;
-    z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 2;
 }
 
 .th-footer__content {
-    text-align: center;
-    margin-bottom: 80px;
+  text-align: center;
+  margin-bottom: 80px;
 }
 
 .th-footer__logo {
-    font-size: 2rem;
-    font-weight: 900;
-    letter-spacing: -1px;
-    margin-bottom: 20px;
-    color: var(--color-white);
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+  color: var(--color-white);
 }
 
 .th-footer__logo span {
-    /* Aplicação do Gradiente */
-    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+  /* Aplicação do Gradiente */
+  background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .th-footer__description {
-    max-width: 450px;
-    margin: 0 auto 40px;
-    color: var(--color-gray);
-    font-size: 1.1rem;
+  max-width: 450px;
+  margin: 0 auto 40px;
+  color: var(--color-gray);
+  font-size: 1.1rem;
 }
 
 /* Redes Sociais mantendo a estética dos botões apenas no hover */
 .th-footer__social {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
 }
 
 .th-social-item {
-    position: relative; /* Necessário para posicionar o gradiente */
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 12px;
-    color: var(--color-white);
-    font-size: 1.2rem;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    z-index: 1;
-    overflow: hidden;
+  position: relative;
+  /* Necessário para posicionar o gradiente */
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  color: var(--color-white);
+  font-size: 1.2rem;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 1;
+  overflow: hidden;
 }
 
 /* Criamos uma camada para o gradiente */
 .th-social-item::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: var(--gradient-koorvo);
-    opacity: 0; /* Começa invisível */
-    transition: opacity 0.4s ease;
-    z-index: -1; /* Fica atrás do ícone/texto */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-koorvo);
+  opacity: 0;
+  /* Começa invisível */
+  transition: opacity 0.4s ease;
+  z-index: -1;
+  /* Fica atrás do ícone/texto */
 }
 
 .th-social-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(123, 66, 246, 0.2);
-    color: white;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(123, 66, 246, 0.2);
+  color: white;
 }
 
 /* No hover, mostramos o gradiente suavemente */
 .th-social-item:hover::before {
-    opacity: 1;
+  opacity: 1;
 }
 
 /* Rodapé Inferior */
 .th-footer__bottom {
-    padding-top: 40px;
-    border-top: 1px solid rgba(255, 255, 255, 0.03);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.9rem;
-    color: rgba(160, 174, 192, 0.5);
+  padding-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  color: rgba(160, 174, 192, 0.5);
 }
 
 .th-footer__links {
-    display: flex;
-    gap: 30px;
+  display: flex;
+  gap: 30px;
 }
 
 .th-footer__links a {
-    transition: 0.3s;
+  transition: 0.3s;
 }
 
 .th-footer__links a:hover {
-    color: var(--color-secondary);
+  color: var(--color-secondary);
 }
 
 /* Responsividade Footer */
 @media (max-width: 768px) {
-    .th-footer { padding: 60px 0 30px; }
-    .th-footer__bottom {
-        flex-direction: column;
-        gap: 20px;
-        text-align: center;
-    }
+  .th-footer {
+    padding: 60px 0 30px;
+  }
+
+  .th-footer__bottom {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
 }
 
 /* EFEITOS DE GLOW (ORBES) - POSICIONAMENTO SUAVE */
 .th-bg-glow {
   position: absolute;
-  width: 800px; height: 800px; border-radius: 50%;
-  filter: blur(150px); opacity: 0.12; pointer-events: none;
-  z-index: 0; will-change: transform;
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  filter: blur(150px);
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 0;
+  will-change: transform;
 }
 
 /* Transições de Orbes: garantindo que eles não "cortem" nas bordas */
-.th-about .th-bg-glow { top: -10%; left: -10%; background: var(--color-primary); animation: floatGlow 15s infinite alternate; }
-.th-services .th-bg-glow { bottom: -10%; right: -10%; background: var(--color-secondary); animation: floatGlow 20s infinite alternate-reverse; }
-.th-contact .th-bg-glow { top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--gradient-koorvo); width: 800px; opacity: 0.08; }
+.th-about .th-bg-glow {
+  top: -10%;
+  left: -10%;
+  background: var(--color-primary);
+  animation: floatGlow 15s infinite alternate;
+}
+
+.th-services .th-bg-glow {
+  bottom: -10%;
+  right: -10%;
+  background: var(--color-secondary);
+  animation: floatGlow 20s infinite alternate-reverse;
+}
+
+.th-contact .th-bg-glow {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--gradient-koorvo);
+  width: 800px;
+  opacity: 0.08;
+}
 
 @keyframes floatGlow {
-  0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(50px, 30px) scale(1.1); }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate(50px, 30px) scale(1.1);
+  }
 }
 
 /* Botão Flutuante de WhatsApp - Estética Koorvo */
 .th-whatsapp-float {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 60px; /* Tamanho fixo para ser apenas o ícone */
-    height: 60px;
-    background: var(--gradient-koorvo); /* Mesma cor do primeiro botão */
-    border-radius: 50%;
-    box-shadow: 0 10px 25px rgba(123, 66, 246, 0.3);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    text-decoration: none;
-    overflow: visible; /* Para permitir o brilho da borda */
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  /* Tamanho fixo para ser apenas o ícone */
+  height: 60px;
+  background: var(--gradient-koorvo);
+  /* Mesma cor do primeiro botão */
+  border-radius: 50%;
+  box-shadow: 0 10px 25px rgba(123, 66, 246, 0.3);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-decoration: none;
+  overflow: visible;
+  /* Para permitir o brilho da borda */
 }
 
 /* O anel de luz (mesmo efeito do primeiro botão) */
 .th-whatsapp-float::before {
-    content: "";
-    position: absolute;
-    top: -6px; left: -6px; right: -6px; bottom: -6px;
-    border-radius: 50%;
-    padding: 2px;
-    background: linear-gradient(90deg, 
-        transparent 0%, 
-        var(--color-primary) 30%, 
-        var(--color-white) 50%, 
-        var(--color-secondary) 70%, 
-        transparent 100%);
-    background-size: 200% 100%;
-    background-position: 200% 0;
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    opacity: 0;
-    transition: opacity 0.4s ease;
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  border-radius: 50%;
+  padding: 2px;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      var(--color-primary) 30%,
+      var(--color-white) 50%,
+      var(--color-secondary) 70%,
+      transparent 100%);
+  background-size: 200% 100%;
+  background-position: 200% 0;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
 .th-whatsapp-float:hover {
-    transform: scale(1.1) rotate(5deg);
-    box-shadow: 0 15px 35px rgba(123, 66, 246, 0.5);
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 15px 35px rgba(123, 66, 246, 0.5);
 }
 
 /* Ativa a animação de luz no hover, igual ao botão da Hero */
 .th-whatsapp-float:hover::before {
-    opacity: 1;
-    animation: lightSlide 8s linear infinite;
+  opacity: 1;
+  animation: lightSlide 8s linear infinite;
 }
 
 .th-whatsapp-float i {
-    font-size: 1.8rem;
-    color: white;
-    z-index: 2;
+  font-size: 1.8rem;
+  color: white;
+  z-index: 2;
 }
 
 /* Ajuste para mobile */
 @media (max-width: 768px) {
-    .th-whatsapp-float {
-        width: 55px;
-        height: 55px;
-        bottom: 20px;
-        right: 20px;
-    }
+  .th-whatsapp-float {
+    width: 55px;
+    height: 55px;
+    bottom: 20px;
+    right: 20px;
+  }
 }
 
 /* RESPONSIVIDADE GERAL */
 @media (max-width: 992px) {
-  .th-about__wrapper { flex-direction: column; text-align: center; gap: 40px; }
+  .th-about__wrapper {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+  }
 }
