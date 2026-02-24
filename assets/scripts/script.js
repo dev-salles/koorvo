@@ -201,11 +201,11 @@ document.querySelectorAll('.legal-trigger').forEach(trigger => {
         const type = trigger.getAttribute('data-type');
         modalBody.innerHTML = legalContent[type];
         modal.classList.add('is-open');
-        document.body.style.overflow = 'hidden'; // Trava o scroll do site
+        toggleModalScroll(true); // Trava o scroll do site
     });
 });
 
 closeBtn.onclick = () => {
     modal.classList.remove('is-open');
-    document.body.style.overflow = 'auto'; // Destrava o scroll
+    toggleModalScroll(false); // Destrava o scroll
 };

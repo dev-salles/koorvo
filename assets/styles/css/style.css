@@ -220,6 +220,10 @@ li {
   color: var(--color-secondary);
 }
 
+.th-header__menu-social {
+  display: none;
+}
+
 /* --- COMPORTAMENTO MOBILE (Abaixo de 992px) --- */
 @media (max-width: 992px) {
   .th-header__logo {
@@ -253,7 +257,8 @@ li {
     right: -100%;
     padding: 120px 20px 20px 20px;
     transition: right 0.3s ease;
-    border-left: 1px solid rgba(123, 66, 246, 0.3);;
+    border-left: 1px solid rgba(123, 66, 246, 0.3);
+    ;
     cursor: default;
   }
 
@@ -305,6 +310,17 @@ li {
 
   .th-header__navigation.menu-open .th-header__menu-container {
     right: 0;
+  }
+
+  .th-header__menu-social {
+    display: block;
+    margin-top: 40px;
+  }
+
+  .th-header__menu-social a {
+    font-size: 1.6em;
+    width: 60px;
+    height: 60px;
   }
 }
 
@@ -527,7 +543,7 @@ li {
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
   transition: all 0.5s ease;
   /* Importante: isolar o contexto para o z-index interno funcionar */
-  isolation: isolate; 
+  isolation: isolate;
 }
 
 /* O NOVO BRILHO: Agora aplicado diretamente na div da logo */
@@ -544,7 +560,7 @@ li {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 100%; 
+  width: 100%;
   height: 100%;
   transform: translate(-50%, -50%) scale(1);
 
@@ -552,16 +568,17 @@ li {
 
   filter: blur(40px);
   border-radius: 50%;
-  opacity: 0.8; /* Base um pouco mais forte */
+  opacity: 0.8;
+  /* Base um pouco mais forte */
   z-index: -1;
-  pointer-events: none; 
+  pointer-events: none;
   transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Efeito de hover para o brilho "acender" */
 .th-about__image-content:hover .th-about__img-card::before {
   opacity: 1;
-  transform: translate(-50%, -50%) scale(1.8); 
+  transform: translate(-50%, -50%) scale(1.8);
   filter: blur(110px);
 }
 
@@ -1209,105 +1226,141 @@ li {
 }
 
 .th-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-    display: flex; /* Escondido por padrão */
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: flex;
+  /* Escondido por padrão */
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 
-    /* Escondido mas preparado para animar */
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Escondido mas preparado para animar */
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .th-modal.is-open {
-    opacity: 1;
-    pointer-events: auto;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .th-modal__overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: rgba(5, 7, 10, 0.85);
-    backdrop-filter: blur(0px); /* Começa em 0 */
-    transition: backdrop-filter 0.5s ease;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(5, 7, 10, 0.85);
+  backdrop-filter: blur(0px);
+  /* Começa em 0 */
+  transition: backdrop-filter 0.5s ease;
 }
 
 .th-modal.is-open .th-modal__overlay {
-    backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
 }
 
 .th-modal__content {
-    position: relative;
-    background: #0f121a;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 40px;
-    max-width: 800px;
-    width: 100%;
-    max-height: 80vh;
-    padding: 60px;
-    overflow-y: auto;
-    z-index: 10;
-    
-    /* Efeito de escala: começa 5% maior e volta ao normal */
-    transform: scale(1.05) translateY(10px);
-    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+  position: relative;
+  background: #0f121a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 40px;
+  max-width: 800px;
+  width: 100%;
+  height: 100%;
+  max-height: 80vh;
+  padding: 60px;
+  /* overflow-y: auto; */
+  z-index: 10;
+
+  /* Efeito de escala: começa 5% maior e volta ao normal */
+  transform: scale(1.05) translateY(10px);
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
 }
 
 /* Quando a modal abre, o conteúdo "pousa" no centro */
 .th-modal.is-open .th-modal__content {
-    transform: scale(1) translateY(0);
-    border-color: rgba(123, 66, 246, 0.3); /* Leve brilho roxo na borda ao abrir */
+  transform: scale(1) translateY(0);
+  border-color: rgba(123, 66, 246, 0.3);
+  /* Leve brilho roxo na borda ao abrir */
 }
 
 /* Barra de scroll personalizada dentro da modal */
-.th-modal__content::-webkit-scrollbar {
-    width: 5px;
-}
-.th-modal__content::-webkit-scrollbar-thumb {
-    background: var(--gradient-koorvo);
-    border-radius: 10px;
+/* .th-modal__content::-webkit-scrollbar {
+  width: 5px;
 }
 
+.th-modal__content::-webkit-scrollbar-thumb {
+  background: var(--gradient-koorvo);
+  border-radius: 10px;
+} */
+
 .th-modal__close {
-    position: absolute;
-    top: 20px;
-    right: 25px;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 2rem;
-    cursor: pointer;
-    transition: 0.3s;
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 .th-modal__close:hover {
-    color: var(--color-secondary);
-    transform: rotate(90deg);
+  color: var(--color-secondary);
+  transform: rotate(90deg);
 }
 
 /* Dentro da sua modal de texto jurídico */
+#modal-body {
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  overflow-y: auto;
+  padding-right: 12px;
+}
+
+#modal-body::-webkit-scrollbar {
+  width: 3px;
+}
+
+#modal-body::-webkit-scrollbar-thumb {
+  background: var(--gradient-koorvo);
+  border-radius: 10px;
+}
+
 #modal-body h2 {
-    font-size: 1.8rem;
-    font-weight: 800;
+  font-size: 1.8rem;
+  font-weight: 800;
 }
 
 #modal-body h3 {
-    font-size: 1.1rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 #modal-body p {
-    margin-bottom: 15px;
-    font-size: 1rem;
+  margin-bottom: 15px;
+  font-size: 1rem;
+}
+
+@media (max-width: 576px) {
+  .th-modal__content {
+    padding: 30px 20px;
+    max-height: 90vh;
+    border-radius: 25px;
+  }
+
+  .th-modal__close {
+    top: 5px;
+    right: 15px;
+    font-size: 1.6rem;
+  }
 }
