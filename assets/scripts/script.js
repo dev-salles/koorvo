@@ -130,7 +130,7 @@ if (copyrightYear) {
 
 const modal = document.getElementById('legal-modal');
 const modalBody = document.getElementById('modal-body');
-const closeBtn = document.querySelector('.th-modal__close');
+const closeBtn = document.querySelectorAll('.close-modal');
 
 const legalContent = {
     privacy: `
@@ -205,7 +205,11 @@ document.querySelectorAll('.legal-trigger').forEach(trigger => {
     });
 });
 
-closeBtn.onclick = () => {
-    modal.classList.remove('is-open');
-    toggleModalScroll(false); // Destrava o scroll
-};
+closeBtn.forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+        if (e.target.classList.contains('close-modal')) {
+            modal.classList.remove('is-open');
+            toggleModalScroll(false); // Libera o scroll do site
+        }
+    });
+});
