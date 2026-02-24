@@ -367,6 +367,21 @@ li {
   z-index: 1;
 }
 
+@media (max-width: 992px) {
+  .th-hero::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%234facfe' stroke-width='0.3' stroke-opacity='0.1'%3E%3Cpath d='M30 0 L60 15 L60 45 L30 60 L0 45 L0 15 Z'/%3E%3Cpath d='M30 0 L30 30 L0 15 M30 30 L60 15 M30 30 L30 60'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 100px; /* Cubos um pouco maiores para telas médias */
+  }
+}
+
+@media (max-width: 576px) {
+  .th-hero::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%234facfe' stroke-width='0.3' stroke-opacity='0.1'%3E%3Cpath d='M30 0 L60 15 L60 45 L30 60 L0 45 L0 15 Z'/%3E%3Cpath d='M30 0 L30 30 L0 15 M30 30 L60 15 M30 30 L30 60'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 150px; /* Cubos grandes para um visual mais abstrato e limpo */
+    background-position: center;
+  }
+}
+
 .th-hero__container {
   width: 100%;
   max-width: 1100px;
