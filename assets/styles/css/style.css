@@ -130,17 +130,10 @@ li {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-
-  /* A SOLUÇÃO: */
   display: inline-block;
   padding-right: 4px;
-  /* Cria um espaço extra para o brilho/gradiente não bater na borda da caixa */
   margin-left: 1px;
-  /* Garante que ele não cole no 'O' da logo */
   line-height: 1;
-  /* Estabiliza a altura da linha */
-
-  /* Previne cortes em alguns navegadores (Chrome/Edge) */
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
 
@@ -370,14 +363,16 @@ li {
 @media (max-width: 992px) {
   .th-hero::before {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%234facfe' stroke-width='0.3' stroke-opacity='0.1'%3E%3Cpath d='M30 0 L60 15 L60 45 L30 60 L0 45 L0 15 Z'/%3E%3Cpath d='M30 0 L30 30 L0 15 M30 30 L60 15 M30 30 L30 60'/%3E%3C/g%3E%3C/svg%3E");
-    background-size: 100px; /* Cubos um pouco maiores para telas médias */
+    background-size: 100px;
+    /* Cubos um pouco maiores para telas médias */
   }
 }
 
 @media (max-width: 576px) {
   .th-hero::before {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%234facfe' stroke-width='0.3' stroke-opacity='0.1'%3E%3Cpath d='M30 0 L60 15 L60 45 L30 60 L0 45 L0 15 Z'/%3E%3Cpath d='M30 0 L30 30 L0 15 M30 30 L60 15 M30 30 L30 60'/%3E%3C/g%3E%3C/svg%3E");
-    background-size: 150px; /* Cubos grandes para um visual mais abstrato e limpo */
+    background-size: 150px;
+    /* Cubos grandes para um visual mais abstrato e limpo */
     background-position: center;
   }
 }
@@ -501,7 +496,6 @@ li {
   left: 0;
   width: 100%;
   height: 500px;
-  /* Aumentamos de 350px para 500px para ser mais gradual */
   /* O gradiente agora começa a mudar muito antes de chegar no fim da seção */
   background: linear-gradient(to bottom, transparent 0%, var(--color-bg-alt) 100%);
   pointer-events: none;
@@ -949,7 +943,6 @@ li {
 }
 
 /* 7. FOOTER */
-/* 7. FOOTER - CLEAN TECH STYLE */
 .th-footer {
   padding: 100px 0 20px;
   background-color: var(--color-bg);
@@ -1378,4 +1371,111 @@ li {
     right: 15px;
     font-size: 1.6rem;
   }
+}
+
+/* Seção Geral */
+.th-cases {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 160px 0 100px;
+  background-color: var(--color-bg);
+  overflow: hidden;
+}
+
+.th-cases__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Título com o ponto estilizado */
+.th-cases__title {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin-bottom: 60px;
+  color: var(--color-white);
+}
+
+.th-cases__title span {
+  /* Mantendo seu gradiente */
+  background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  padding-right: 4px;
+  margin-left: 1px;
+  line-height: 1;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* O "Trilho" do Carrossel */
+.th-cases__track {
+  display: flex;
+  gap: 30px;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Card do Projeto - Seguindo th-card */
+.th-cases__item {
+  flex: 0 0 450px;
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 25px;
+  border-radius: 30px;
+  /* Padrão Koorvo */
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.th-cases__item:hover {
+  transform: translateY(-15px);
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(123, 66, 246, 0.4);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+}
+
+/* Thumbnail do Projeto */
+.th-cases__thumb {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 25px;
+}
+
+.th-cases__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.th-cases__item:hover img {
+  transform: scale(1.03);
+}
+
+/* Informações do Case */
+.th-cases__info h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-white);
+  margin-bottom: 8px;
+}
+
+.th-cases__info span {
+  color: var(--color-secondary);
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 3px;
 }
