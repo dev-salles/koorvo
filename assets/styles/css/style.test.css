@@ -1,0 +1,248 @@
+/* 1. CONFIGURAÇÕES E VARIÁVEIS */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@200;400;500;600;800&display=swap");
+
+:root {
+  --color-primary: #7B42F6;
+  --color-secondary: #00D1FF;
+  --color-bg: #0B0E14;
+  --color-bg-alt: #0f121a;
+  --color-white: #ffffff;
+  --color-gray: #A0AEC0;
+  --color-slate: #94a3b8;
+  --gradient-koorvo: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  --transition-main: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --border-rgba: rgba(255, 255, 255, 0.08);
+  --card-bg: rgba(255, 255, 255, 0.01);
+}
+
+/* 2. RESETS E UTILITÁRIOS */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { 
+  background-color: var(--color-bg); 
+  color: var(--color-gray); 
+  font-family: "Plus Jakarta Sans", sans-serif; 
+  line-height: 1.6; 
+  overflow-x: hidden; 
+}
+
+body.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+  padding-right: var(--scrollbar-width);
+}
+
+::selection, ::-moz-selection {
+  background-color: rgba(123, 66, 246, 0.3);
+  color: var(--color-white);
+  text-shadow: 0 0 8px rgba(123, 66, 246, 0.6);
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-secondary);
+}
+
+h1, h2, h3 {
+  font-family: "Montserrat", sans-serif;
+  color: var(--color-white);
+}
+
+a {
+  text-decoration: none !important;
+  color: inherit;
+  transition: 0.3s;
+}
+
+li {
+  list-style: none;
+}
+
+.th-gradient-text {
+  background: var(--gradient-koorvo);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.th-card-base {
+  background: var(--card-bg);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 30px;
+  transition: var(--transition-main);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 3. BOTÕES (Padronizados) */
+.th-button-base {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.3s ease;
+  z-index: 10;
+}
+
+.th-button {
+  padding: 18px 45px;
+  color: white;
+  background: var(--gradient-koorvo);
+}
+
+.th-button:hover { transform: scale(1.05); }
+
+/* 4. SEÇÕES DA PÁGINA */
+.th-section {
+  width: 100%;
+  padding-block: 80px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.th-soft-transition::before {
+  content: "";
+  position: absolute;
+  bottom: -80px;
+  left: 0;
+  width: 100%;
+  height: 160px;
+  z-index: 10;
+  background-color: var(--color-bg);
+  filter: blur(40px);
+}
+
+/* 5. HEADER (Mobile-First) */
+.th-header {
+  position: fixed;
+  top: 0; width: 100%; z-index: 1000;
+  background: rgba(11, 14, 20, 0.85);
+  backdrop-filter: blur(10px);
+  padding: 15px 0;
+  transition: padding 0.3s ease;
+}
+
+.th-header__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Menu Mobile Overlay */
+.th-header__menu-container {
+  position: fixed;
+  top: 0; right: -100%;
+  width: 100%; height: 100vh;
+  background: var(--color-bg-alt);
+  padding: 100px 20px;
+  transition: right 0.4s ease;
+}
+
+/* Desktop Styles */
+@media (min-width: 992px) {
+  .th-header { padding: 30px 0; }
+  .th-header.scrolling { padding: 10px 0; }
+  .th-header__menu-container {
+    position: static;
+    height: auto;
+    background: transparent;
+    padding: 0;
+    width: auto;
+  }
+  .th-header__menu-list {
+    display: flex;
+    gap: 40px;
+  }
+}
+
+/* 5. HERO */
+.th-hero {
+  min-height: 100vh;
+  padding: 120px 20px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: radial-gradient(circle at 50% 50%, rgba(123, 66, 246, 0.15) 0%, transparent 70%);
+}
+
+.th-hero h1 {
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  font-family: "Montserrat", sans-serif;
+  color: var(--color-white);
+  line-height: 1.1;
+}
+
+/* 6. SERVICES GRID */
+.th-services__list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .th-services__list { grid-template-columns: repeat(2, 1fr); }
+}
+
+.th-card {
+  /* @extend .th-card-base; */
+  padding: 30px;
+  min-height: 280px;
+}
+
+.th-card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(123, 66, 246, 0.4);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* 7. MODAL */
+.th-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.th-modal.is-open { opacity: 1; pointer-events: auto; }
+
+.th-modal__content {
+  background: var(--color-bg-alt);
+  border-radius: 25px;
+  padding: 30px;
+  max-width: 800px;
+  width: 90%;
+  max-height: 80vh;
+  transform: translateY(20px);
+  transition: var(--transition-main);
+}
+
+.th-modal.is-open .th-modal__content { transform: translateY(0); }
+
+/* 8. FOOTER */
+.th-footer {
+  padding: 60px 0 20px;
+  border-top: 1px solid var(--border-rgba);
+}
+
+@media (min-width: 768px) {
+  .th-footer { padding: 100px 0 20px; }
+}
