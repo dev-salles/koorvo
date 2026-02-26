@@ -79,6 +79,26 @@ li {
   background-color: var(--color-secondary);
 }
 
+.th-section {
+  padding-block: 80px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.th-soft-transition::before {
+  content: "";
+  position: absolute;
+  bottom: -80px;
+  left: 0;
+  width: 100%;
+  height: 160px;
+  z-index: 10;
+  background-color: var(--color-bg);
+  filter: blur(40px);
+}
+
 /* 2. HEADER - CORREÇÃO KOORVO (MOBILE VS DESKTOP) */
 .th-header {
   position: fixed;
@@ -485,8 +505,8 @@ li {
 .th-about {
   background-color: var(--color-bg);
   position: relative;
-  padding: 160px 0 200px;
-  overflow: hidden;
+  /* padding: 160px 0 200px;
+  overflow: hidden; */
 }
 
 .th-about::after {
@@ -626,11 +646,11 @@ li {
 /* 6. SEÇÃO SERVIÇOS - ATUALIZAÇÃO KOORVO */
 .th-services {
   background-color: var(--color-bg-alt);
-  padding: 140px 0;
+  /* padding: 140px 0; */
   position: relative;
   z-index: 2;
   overflow: hidden;
-  margin-top: -1px;
+  /* margin-top: -1px; */
 }
 
 .th-services::before {
@@ -818,7 +838,7 @@ li {
 
 /* 8. SEÇÃO CONTATO */
 .th-contact {
-  padding: 120px 0;
+  /* padding: 120px 0; */
   background-color: var(--color-bg);
   position: relative;
   overflow: hidden;
@@ -1377,7 +1397,7 @@ li {
 .th-cases {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 160px 0 100px;
+  /* padding: 160px 0 100px; */
   background-color: var(--color-bg);
   overflow: hidden;
 }
