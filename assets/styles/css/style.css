@@ -80,6 +80,7 @@ li {
 }
 
 .th-section {
+  width: 100%;
   padding-block: 80px;
   min-height: 100vh;
   display: flex;
@@ -505,8 +506,8 @@ li {
 .th-about {
   background-color: var(--color-bg);
   position: relative;
-  /* padding: 160px 0 200px;
-  overflow: hidden; */
+  /* padding: 160px 0 200px; */
+  overflow: hidden;
 }
 
 .th-about::after {
@@ -1395,6 +1396,7 @@ li {
 
 /* Seção Geral */
 .th-cases {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   /* padding: 160px 0 100px; */
@@ -1403,6 +1405,7 @@ li {
 }
 
 .th-cases__container {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
