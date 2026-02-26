@@ -3,6 +3,10 @@ import { ShowOrHideWhatsAppButton, ShowOnApproachWhatsAppButton, FloatingWhatsAp
 import { UpdateCopyrightYear } from './copyright-year.js';
 import { LegalModal } from './legal.js';
 import { Carousel } from './carousel.js';
+import { Header } from './header.js';
+
+// Header
+Header();
 
 // Menu Mobile
 MobileMenu();
@@ -33,6 +37,7 @@ Carousel();
 // Funções ativadas por eventos do document / window
 window.addEventListener('scroll', () => {
     ShowOrHideWhatsAppButton();
+    Header();
 });
 
 document.addEventListener('mousemove', (e) => {

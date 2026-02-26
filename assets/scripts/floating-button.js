@@ -1,5 +1,4 @@
 const whatsappBtn = document.querySelector('.th-whatsapp-float');
-const header = document.querySelector('.j_header');
 let scrollTimeout;
 let isMouseOver = false;
 
@@ -28,13 +27,6 @@ export const ShowOrHideWhatsAppButton = () => {
         }
     } else {
         whatsappBtn.classList.remove('show');
-    }
-
-    // Comportamento do header ao rolar a página
-    if (window.scrollY > 50) {
-        header.classList.add('scrolling');
-    } else {
-        header.classList.remove('scrolling');
     }
 }
 
