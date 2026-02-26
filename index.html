@@ -218,27 +218,34 @@
                 </header>
 
                 <div class="th-cases__track j_carousel_track">
-
-                    <article class="th-cases__item j_modal_open" data-full-img="img/full-nathalia.jpg">
-                        <a href="https://psinathaliareis.vercel.app/" target="_blank">
-                            <div class="th-cases__thumb">
-                                <!-- Imagem Projeto -->
+                    <article class="th-cases__item" data-full-img="img/full-nathalia.jpg">
+                        <div class="th-cases__thumb">
+                            <!-- Imagem Projeto -->
+                            <a href="https://psinathaliareis.vercel.app/" target="_blank">
                                 <img src="assets/images/site_nath.png" alt="Projeto Nathália Reis" loading="lazy">
-                            </div>
-                            <div class="th-cases__info">
-                                <!-- Descrição Projeto -->
-                                <span>Site Institucional</span>
-                                <!-- Nome Projeto -->
-                                <h3>Nathália Reis</h3>
-                            </div>
-                        </a>
+
+                                <div class="th-cases__thumb-overlay">
+                                    <p class="action">Visitar site</p>
+                                    <p>
+                                        <em>Clique no nome para visualizar o estudo de caso</em>
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="th-cases__info j_case_study" title="Ver estudo de caso"  data-id="1">
+                            <!-- Descrição Projeto -->
+                            <span>Site Institucional</span>
+                            <!-- Nome Projeto -->
+                            <h3>Nathália Reis</h3>
+                        </div>
                     </article>
 
                     <article class="th-cases__item j_modal_open" data-full-img="img/full-nathalia.jpg">
                         <a href="#cases">
                             <div class="th-cases__thumb">
                                 <!-- Imagem Projeto -->
-                                <img src="assets/images/Logo Koorvo Arredondado.png" alt="Projeto Nathália Reis" loading="lazy">
+                                <img src="assets/images/Logo Koorvo Arredondado.png" alt="Projeto Nathália Reis"
+                                    loading="lazy">
                             </div>
                             <div class="th-cases__info">
                                 <!-- Descrição Projeto -->
@@ -302,12 +309,11 @@
     </a>
 
 
-    <div id="legal-modal" class="th-modal">
+    <div id="legal-modal" class="th-modal wide">
         <div class="th-modal__overlay close-modal"></div>
         <div class="th-modal__content">
             <button class="th-modal__close close-modal">&times;</button>
-            <div id="modal-body">
-            </div>
+            <div id="modal-body"></div>
         </div>
     </div>
 

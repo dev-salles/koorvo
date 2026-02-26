@@ -6,10 +6,18 @@ const closeBtn = document.querySelectorAll('.close-modal');
 
 /**
  * Função para abrir a modal com o conteúdo específico e controlar o scroll do body
- * @param {HTMLElement | string} content 
+ * @param {string} content - O conteúdo a ser exibido na modal, pode ser um elemento HTML ou uma string HTML
+ * @param {boolean} large - Indica se a modal deve ser exibida em tamanho grande (opcional)
  */
-export const Modal = (content) => {
+export const Modal = (content, large = false) => {
     modalBody.innerHTML = content;
+
+    if (large) {
+        modal.classList.add('wide');
+    } else {
+        modal.classList.remove('wide');
+    }
+
     modal.classList.add('is-open');
     toggleModalScroll(true);
 

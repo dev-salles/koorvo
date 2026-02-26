@@ -32,8 +32,8 @@ export const ShowOrHideWhatsAppButton = () => {
 
 /**
  * Função para mostrar o botão do WhatsApp quando o mouse se aproxima
- * @param {number} positionX 
- * @param {number} positionY 
+ * @param {number} positionX - Posição X do mouse
+ * @param {number} positionY - Posição Y do mouse
  */
 export const ShowOnApproachWhatsAppButton = (positionX, positionY) => {
     const threshold = 150; // Distância em pixels para ativar

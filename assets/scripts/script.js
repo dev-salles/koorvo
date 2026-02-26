@@ -4,6 +4,7 @@ import { UpdateCopyrightYear } from './copyright-year.js';
 import { LegalModal } from './legal.js';
 import { Carousel } from './carousel.js';
 import { Header } from './header.js';
+import { CaseStudy } from './case-study.js';
 
 // Header
 Header();
@@ -34,10 +35,15 @@ Carousel();
 
 // --------------------------------------------------------------------------------------
 
+// ESTUDO DE CASO
+CaseStudy();
+
+// --------------------------------------------------------------------------------------
+
 // Funções ativadas por eventos do document / window
 window.addEventListener('scroll', () => {
-    ShowOrHideWhatsAppButton();
     Header();
+    ShowOrHideWhatsAppButton();
 });
 
 document.addEventListener('mousemove', (e) => {
