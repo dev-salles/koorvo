@@ -1517,9 +1517,13 @@ li {
 
 .th-cases__thumb-overlay .action {
   font-size: 1.3em;
-  color: var(--color-secondary);
+  color: var(--color-white);
   font-weight: 700;
   text-transform: uppercase;
+}
+
+.th-cases__thumb-overlay p {
+  color: #c8c8c8;
 }
   
 .th-cases__item:hover img {
