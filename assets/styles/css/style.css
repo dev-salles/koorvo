@@ -1516,6 +1516,10 @@ li {
   font-weight: 700;
   text-transform: uppercase;
 }
+
+.th-cases__thumb-overlay p {
+  color: #c8c8c8;
+}
   
 .th-cases__item:hover img {
   transform: scale(1.03);
