@@ -1,7 +1,7 @@
 import { toggleModalScroll } from "./modal-scroll-behavior.js";
 
 const menuIcon = document.querySelector('.j_menu_icon');
-const menuOverlay = document.querySelector('.j_close');
+const menuOverlay = document.querySelector('.j_menu_overlay');
 const menu = document.querySelector('.j_menu');
 const menuItems = [document.querySelector(".j_logo"), ...menu.querySelectorAll('.j_menu_item')];
 
