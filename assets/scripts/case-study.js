@@ -43,7 +43,7 @@ export const CaseStudy = () => {
 
             if (project) {
                 const content = caseStudyContainer(project);
-                Modal(content, true);
+                Modal(content, true, true);
             }
         });
     });
