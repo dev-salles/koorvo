@@ -18,11 +18,15 @@ const caseStudyContainer = (project) => {
             </div>
 
             <div class="th-case-study__info">
-                <h2 class="th-case-study__title">${project.name}</h2>
-                <div class="th-case-study__description">
-                    ${project.details}
+                <div class="th-case-study__details">
+                    <h2 class="th-case-study__title">${project.name}</h2>
+                    <div class="th-case-study__description">
+                        ${project.details}
+                    </div>
                 </div>
-                <a href="${project.url}" target="_blank" class="th-button">Visitar Site</a>
+                <div class="th-case-study__action">
+                    <a href="${project.url}" target="_blank" class="th-button">Visitar Site</a>
+                </div>
             </div>
         </div>
     `;
