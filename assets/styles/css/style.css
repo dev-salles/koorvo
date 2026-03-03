@@ -1671,6 +1671,10 @@ li {
   font-size: 1.3em !important;
 }
 
+.th-case-study__action {
+  padding-bottom: 20px;
+}
+
 @media (max-width: 992px) {
   .th-case-study {
     flex-direction: column;
