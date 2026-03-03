@@ -576,6 +576,59 @@ li {
   transition: all 0.5s ease;
   /* Importante: isolar o contexto para o z-index interno funcionar */
   isolation: isolate;
+  overflow: hidden;
+}
+
+/* 2. Criar o elemento da borda animada */
+.th-about__image-content::before {
+  content: "";
+  position: absolute;
+  /* O segredo: o elemento deve ser maior que o container para cobrir as quinas ao girar */
+  inset: -150%; 
+  z-index: 0;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    transparent 25%,
+    var(--color-primary) 50%,
+    var(--color-secondary) 75%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+/* 3. Ativar e animar no Hover */
+.th-about__image-content:hover::before {
+  opacity: 1;
+  animation: borderRotate 3s linear infinite;
+}
+
+/* 4. Criar a máscara para que o gradiente apareça apenas na borda */
+/* Usamos um pseudo-elemento ::after para criar o fundo interno e "cortar" o centro */
+.th-about__image-content::after {
+  content: "";
+  position: absolute;
+  inset: 2px; /* Ajuste aqui a espessura da borda (ex: 1px ou 2px) */
+  background: #0b0b0b; /* Deve ser a cor exata do fundo do seu site ou container */
+  border-radius: 38px; /* Um pouco menor que os 40px do container para encaixar */
+  z-index: 0;
+}
+
+/* 5. Ajustar o z-index do conteúdo interno */
+.th-about__img-card {
+  z-index: 1; /* Garante que a logo fique acima da máscara e da borda */
+}
+
+/* Animação de Rotação */
+@keyframes borderRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* O NOVO BRILHO: Agora aplicado diretamente na div da logo */
@@ -594,7 +647,7 @@ li {
   left: 50%;
   width: 100%;
   height: 100%;
-  transform: translate(-50%, -50%) scale(1);
+  transform: translate(-50%, -50%) scale(.8);
 
   background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
 
@@ -610,8 +663,8 @@ li {
 /* Efeito de hover para o brilho "acender" */
 .th-about__image-content:hover .th-about__img-card::before {
   opacity: 1;
-  transform: translate(-50%, -50%) scale(1.8);
-  filter: blur(110px);
+  transform: translate(-50%, -50%) scale(1.2) rotate(360deg);
+  filter: blur(80px);
 }
 
 .th-about__img-card img {
