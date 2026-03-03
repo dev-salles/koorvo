@@ -614,6 +614,12 @@ li {
   background: #0b0b0b; /* Deve ser a cor exata do fundo do seu site ou container */
   border-radius: 38px; /* Um pouco menor que os 40px do container para encaixar */
   z-index: 0;
+  opacity: 0;  
+  transition: opacity 0.5s ease;
+}
+
+.th-about__image-content:hover::after {
+  opacity: 1;
 }
 
 /* 5. Ajustar o z-index do conteúdo interno */
