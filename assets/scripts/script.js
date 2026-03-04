@@ -5,6 +5,7 @@ import { LegalModal } from './legal.js';
 import { Carousel } from './carousel.js';
 import { Header } from './header.js';
 import { CaseStudy } from './case-study.js';
+import { contactBox } from './effect-contact.js'
 
 // Header
 Header();

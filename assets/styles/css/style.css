@@ -915,24 +915,66 @@ li {
 }
 
 .th-contact__box {
-  background: linear-gradient(135deg, rgba(123, 66, 246, 0.1) 0%, rgba(0, 209, 255, 0.05) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 80px 40px;
-  border-radius: 40px;
-  position: relative;
-  overflow: hidden;
+    background: linear-gradient(135deg, rgba(123, 66, 246, 0.1) 0%, rgba(0, 209, 255, 0.05) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 80px 40px;
+    border-radius: 40px;
+    position: relative;
+    overflow: hidden; /* Garante que a animação fique contida na caixa */
+    
+    transition: all 0.5s ease;
 }
 
 .th-contact__box::before {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(123, 66, 246, 0.15) 0%, transparent 60%);
-  pointer-events: none;
-  z-index: 0;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%; /* Duplica a largura para a animação do gradiente */
+    height: 100%;
+    
+    /* Gradiente Neon da Koorvo que percorre a borda */
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(123, 66, 246, 0.2),
+        rgba(0, 209, 255, 0.1),
+        transparent
+    );
+    
+    transition: opacity 0.5s ease;
+    
+    /* Começa com opacidade menor para não ficar agressivo */
+    opacity: 0.6;
+    
+    pointer-events: none; /* Garante que o usuário possa interagir com o conteúdo */
+}
+
+.th-contact__box:hover {
+    border-color: rgba(123, 66, 246, 0.4);
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
+}
+
+.th-contact__box:hover::before {
+    /* Aumenta o brilho e a expansão no hover */
+    opacity: 1;
+    filter: blur(80px);
+    transform: scale(1.05);
+}
+
+.th-contact__box:hover::after {
+    opacity: 1; /* Aumenta a opacidade no hover */
+    animation: lightSlide 8s linear infinite; /* Ativa a animação no hover */
+}
+
+/* Animação do Gradiente Percorrendo a Borda */
+@keyframes lightSlide {
+    0% {
+        background-position: 200% 0; /* Começa fora da visão à direita */
+    }
+    100% {
+        background-position: -200% 0; /* Termina fora da visão à esquerda */
+    }
 }
 
 .th-contact__content {
