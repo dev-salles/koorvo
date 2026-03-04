@@ -1623,6 +1623,10 @@ li {
   max-height: 100%;
 }
 
+.th-case-study__title {
+  margin-bottom: 10px;
+}
+
 .th-case-study__image {
   flex-basis: 50%;
   height: 100%;
@@ -1668,11 +1672,61 @@ li {
 }
 
 .th-case-study__description * {
-  font-size: 1.3em !important;
+  font-size: 1.0em !important;
 }
 
 .th-case-study__action {
   padding-bottom: 20px;
+}
+
+/* Botão ação da modal */
+.th-button--modal {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 45px;
+  border-radius: 50px;
+  font-weight: 700;
+  width: 375px;
+  color: white;
+  background: var(--gradient-koorvo);
+  cursor: pointer;
+  border: none;
+  transition: transform 0.3s ease;
+  overflow: visible;
+  z-index: 10;
+}
+
+.th-button--modal::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border-radius: 60px;
+  padding: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--color-primary) 30%, var(--color-white) 50%, var(--color-secondary) 70%, transparent 100%);
+  background-size: 200% 100%;
+  background-position: 200% 0;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.th-button--modal:hover {
+  transform: scale(1.03);
+}
+
+.th-button--modal:hover::before {
+  opacity: 1;
+  animation: lightSlide 10s linear infinite;
+  filter: drop-shadow(0 0 3px var(--color-primary));
 }
 
 @media (max-width: 992px) {
@@ -1695,6 +1749,10 @@ li {
     padding: 30px 20px;
     height: auto;
     overflow: visible;
+  }
+
+  .th-button--modal {
+    width: 200px;
   }
 }
 

@@ -25,7 +25,7 @@ const caseStudyContainer = (project) => {
                     </div>
                 </div>
                 <div class="th-case-study__action">
-                    <a href="${project.url}" target="_blank" class="th-button">Visitar Site</a>
+                    <a href="${project.url}" target="_blank" class="th-button--modal">Visitar Site</a>
                 </div>
             </div>
         </div>
